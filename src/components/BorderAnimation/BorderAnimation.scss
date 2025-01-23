@@ -1,0 +1,24 @@
+.border-animation {
+  position: relative;
+  padding: 1rem;
+  .border {
+    position: absolute;
+    bottom: 0;
+    top: 54px;
+    left: 0;
+    width: 0;
+    height: 2px; // Adjust height as needed
+    background: linear-gradient(282.3deg, #ab00ff 28.93%, #00c8eb);
+    transition: width 0.5s ease; // Animation duration and easing
+  }
+
+  &.active {
+    background: linear-gradient(282.3deg, #ab00ff 28.93%, #00c8eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: ease .5s opacity;
+    .border {
+      width: 100%; // Full width when active
+    }
+  }
+}
