@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./FormStepper.scss";
 import BorderAnimation from "../BorderAnimation/BorderAnimation";
-import Axios from "axios";
 
 export interface IStepProps {
   placeholder: string;
