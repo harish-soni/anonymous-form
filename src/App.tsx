@@ -45,6 +45,14 @@ function App() {
         "How satisfied were you with the variety and quality of food provided during the outing?",
     },
     {
+      title: "Venue",
+      componentToRender: (key: string, stepData: IStepProps) =>
+        Step(key, stepData),
+      placeholder: "Enter your feedback here",
+      label:
+        "Was the venue suitable for the event in terms of location, and ambiance?",
+    },
+    {
       title: "Logistics",
       componentToRender: (key: string, stepData: IStepProps) =>
         Step(key, stepData),
