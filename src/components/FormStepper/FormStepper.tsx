@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./FormStepper.scss";
 import BorderAnimation from "../BorderAnimation/BorderAnimation";
+import Axios from "axios";
 
 export interface IStepProps {
   placeholder: string;
@@ -13,15 +14,20 @@ interface Step extends IStepProps {
 }
 
 interface FormStepperProps {
+  onSubmit: () => void;
   steps: Step[];
 }
 
-export const FormStepper = ({ steps }: FormStepperProps) => {
+export const FormStepper = ({ steps, onSubmit }: FormStepperProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleNext = () => {
     if (activeIndex < steps.length - 1) {
       setActiveIndex((prev) => prev + 1);
+      return;
+    }
+    if (activeIndex === steps.length - 1) {
+      onSubmit();
     }
   };
 
@@ -39,7 +45,7 @@ export const FormStepper = ({ steps }: FormStepperProps) => {
       <div className="form-stepper__heading">
         <h1 className="form-stepper__h1">Bcz Feedback Matters</h1>
       </div>
-      <div className="form-stepper form-stepper__form" >
+      <div className="form-stepper form-stepper__form">
         <div className="form-stepper__titles">
           {steps.map((step, index) => (
             <div
