@@ -45,7 +45,7 @@ function App() {
         {
           title: "Preference",
           componentToRender: () => (
-            <div className="flex">
+            <div className="flex custom-textarea">
               <Checkbox
                 checked={responseObject["Day Outing"]}
                 label="Day"

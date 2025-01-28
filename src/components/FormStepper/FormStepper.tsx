@@ -70,7 +70,14 @@ export const FormStepper = ({ steps, onSubmit }: FormStepperProps) => {
               )}
           </div>
           <div className="form-stepper__component mobile">
-            {steps.map((step) => ActiveComponent(step.title, step))}
+            {steps.map((step) => {
+              return <>
+                {ActiveComponent(step.title, step)}
+                {step?.subQues?.map((subQues) =>
+                  subQues.componentToRender(activeTitle, steps[activeIndex])
+                )}
+                    </>
+            })}
           </div>
 
           <div className="form-stepper__navigation">
