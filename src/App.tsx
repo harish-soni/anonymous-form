@@ -5,6 +5,7 @@ import TextArea from "./components/TextArea/TextArea";
 import Axios from "axios";
 import { Loader } from "./components/Loader/Loader";
 import { Toast } from "./components/Toast/Toast"; // Updated import
+import Checkbox from "./components/Checkbox/Checkbox";
 
 function App() {
   const [responseObject, setResponseObject] = useState<{
@@ -15,6 +16,11 @@ function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const handleInputChange = (key: string, value: string) => {
+    console.log(">> key", key);
+    setResponseObject((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleCheckboxChange = (key: string, value: string) => {
     setResponseObject((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -27,7 +33,7 @@ function App() {
       placeholder={stepData.placeholder}
     />
   );
-
+  console.log(">> responseObject", responseObject);
   const steps = [
     {
       title: "R&R Event",
@@ -35,6 +41,32 @@ function App() {
         Step(key, stepData),
       placeholder: "Enter your feedback here",
       label: "How would you rate for the last R&R event on our Team?",
+      subQues: [
+        {
+          title: "Preference",
+          componentToRender: () => (
+            <div className="flex">
+              <Checkbox
+                checked={responseObject["Day Outing"]}
+                label="Day"
+                mainLabel="What would you prefer a day outing or night stay outing?"
+                onChange={(e) =>
+                  handleCheckboxChange("Day Outing", e.toString())
+                }
+              />
+              <Checkbox
+                checked={responseObject["Night Stay"]}
+                label="Night"
+                onChange={(e) =>
+                  handleCheckboxChange("Night Stay", e.toString())
+                }
+              />
+            </div>
+          ),
+          placeholder: "Enter your feedback here",
+          label: "What would you prefer?",
+        },
+      ],
     },
     {
       title: "Food",
@@ -81,10 +113,7 @@ function App() {
     setLoading(true);
     Axios.post(
       "https://us-central1-coditas-website.cloudfunctions.net/saveRegistration",
-      steps.reduce((acc: any, step: any) => {
-        acc[step.title] = responseObject[step.title];
-        return acc;
-      }, {})
+      responseObject
     )
       .then(() => {
         setToastMessage("Saved successfuly!");

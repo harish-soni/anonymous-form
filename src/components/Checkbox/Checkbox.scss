@@ -1,0 +1,80 @@
+.flex {
+  display: flex;
+  align-items: flex-end;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  position: relative;
+}
+.custom-checkbox {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  &__checked {
+    background: var(--primary-gradient);
+    border-color: var(--primary-gradient);
+  }
+
+  &__tick {
+    background: transparent; // var(--primary-gradient);
+    border-color: var(--primary-gradient);
+    right: 7px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    &::after {
+      content: "✔"; // Add this line to display the tick mark
+      color: white; // Set the color of the tick mark
+      font-size: 1rem; // Adjust the size of the tick mark
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    right: 0;
+    z-index: 111;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__label {
+    font-size: 1rem;
+    color: #666;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+  }
+
+  &__box {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #ddd;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    background: var(--primary-gradient);
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.5rem;
+      height: 0.5rem;
+      background: white;
+      opacity: 0;
+      transform: scale(0) translate(-50%, -50%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  }
+
+  &:hover {
+    .custom-checkbox__label {
+      color: #2196f3;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import BorderAnimation from "../BorderAnimation/BorderAnimation";
 export interface IStepProps {
   placeholder: string;
   label: string;
+  subQues?: Step[];
 }
 
 interface Step extends IStepProps {
@@ -37,6 +38,7 @@ export const FormStepper = ({ steps, onSubmit }: FormStepperProps) => {
   };
 
   const ActiveComponent = steps[activeIndex].componentToRender;
+  const SubQues = steps[activeIndex].subQues;
   const activeTitle = steps[activeIndex].title;
 
   return (
@@ -62,6 +64,10 @@ export const FormStepper = ({ steps, onSubmit }: FormStepperProps) => {
         <div className="form-stepper__content">
           <div className="form-stepper__component desktop">
             {ActiveComponent(activeTitle, steps[activeIndex])}
+            {SubQues &&
+              SubQues.map((subQues, index) =>
+                subQues.componentToRender(activeTitle, steps[activeIndex])
+              )}
           </div>
           <div className="form-stepper__component mobile">
             {steps.map((step) => ActiveComponent(step.title, step))}
