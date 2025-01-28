@@ -65,7 +65,7 @@ export const FormStepper = ({ steps, onSubmit }: FormStepperProps) => {
           <div className="form-stepper__component desktop">
             {ActiveComponent(activeTitle, steps[activeIndex])}
             {SubQues &&
-              SubQues.map((subQues, index) =>
+              SubQues.map((subQues) =>
                 subQues.componentToRender(activeTitle, steps[activeIndex])
               )}
           </div>
