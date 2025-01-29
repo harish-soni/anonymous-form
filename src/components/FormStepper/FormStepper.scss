@@ -122,6 +122,10 @@
 }
 
 @media (max-width: 768px) {
+  .form-stepper--shadow{
+    max-width: 100%;
+    margin: 20px 0px;
+  }
   .form-stepper__component.mobile {
     display: block;
   }
@@ -138,4 +142,5 @@
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
+  max-width: 80%;
 }
