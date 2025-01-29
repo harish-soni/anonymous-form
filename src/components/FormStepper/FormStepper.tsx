@@ -44,7 +44,7 @@ export const FormStepper = ({ steps, onSubmit }: FormStepperProps) => {
   return (
     <div className="form-stepper form-stepper--shadow">
       <div className="form-stepper__heading">
-        <h1 className="form-stepper__h1">Bcz Feedback Matters</h1>
+        <h1 className="form-stepper__h1">R&R Outing Feedback</h1>
       </div>
       <div className="form-stepper form-stepper__form">
         <div className="form-stepper__titles">
