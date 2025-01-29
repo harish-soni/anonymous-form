@@ -13,6 +13,7 @@
   display: flex;
   cursor: pointer;
   flex-direction: column;
+  margin-right: 30px;
   &__checked {
     background: var(--primary-gradient);
     border-color: var(--primary-gradient);
@@ -21,7 +22,7 @@
   &__tick {
     background: transparent; // var(--primary-gradient);
     border-color: var(--primary-gradient);
-    right: 7px;
+    left: 7px;
     transition: opacity 0.3s ease, transform 0.3s ease;
     position: absolute;
     &::after {
@@ -38,7 +39,7 @@
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    right: 0;
+    left: 0;
     z-index: 111;
     width: 24px;
     height: 24px;
@@ -47,7 +48,7 @@
   &__label {
     font-size: 1rem;
     color: #666;
-    margin-right: 10px;
+    margin-left: 10px;
     transition: color 0.3s ease;
   }
 
@@ -72,9 +73,5 @@
     }
   }
 
-  &:hover {
-    .custom-checkbox__label {
-      color: #2196f3;
-    }
-  }
+ 
 }

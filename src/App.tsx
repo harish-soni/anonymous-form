@@ -16,7 +16,6 @@ function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const handleInputChange = (key: string, value: string) => {
-    console.log(">> key", key);
     setResponseObject((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -33,35 +32,38 @@ function App() {
       placeholder={stepData.placeholder}
     />
   );
-  console.log(">> responseObject", responseObject);
   const steps = [
     {
       title: "R&R Event",
       componentToRender: (key: string, stepData: IStepProps) =>
         Step(key, stepData),
       placeholder: "Enter your feedback here",
-      label: "How would you rate for the last R&R event on our Team?",
+      label: "How was the Reward and Recognition ceremony for you? Do you have any suggestions or changes you would like to see specifically for the R&R ceremony?",
       subQues: [
         {
           title: "Preference",
           componentToRender: () => (
-            <div className="flex custom-textarea">
-              <Checkbox
-                checked={responseObject["Day Outing"]}
-                label="Day"
-                mainLabel="What would you prefer a day outing or night stay outing?"
-                onChange={(e) =>
-                  handleCheckboxChange("Day Outing", e.toString())
-                }
-              />
-              <Checkbox
-                checked={responseObject["Night Stay"]}
-                label="Night"
-                onChange={(e) =>
-                  handleCheckboxChange("Night Stay", e.toString())
-                }
-              />
-            </div>
+            <div className="custom-checkbox-container">
+
+              <label className="custom-textarea__label">{'What would you prefer for next outing?'}</label>
+
+              <div className="flex">
+
+                <Checkbox
+                  checked={responseObject["Day Outing"]}
+                  label="Day Outing"
+                  onChange={(e) =>
+                    handleCheckboxChange("Day Outing", e.toString())
+                  }
+                />
+                <Checkbox
+                  checked={responseObject["Night Stay"]}
+                  label="Night Stay"
+                  onChange={(e) =>
+                    handleCheckboxChange("Night Stay", e.toString())
+                  }
+                />
+              </div>            </div>
           ),
           placeholder: "Enter your feedback here",
           label: "What would you prefer?",

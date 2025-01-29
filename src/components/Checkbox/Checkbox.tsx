@@ -11,16 +11,12 @@ interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps> = ({
   label,
   checked,
-  mainLabel,
   onChange,
 }) => {
-  console.log(">> checked", checked);
   return (
     <div className="custom-checkbox">
-      {mainLabel && (
-        <label className="custom-textarea__label">{mainLabel}</label>
-      )}
       <div className="flex-center">
+
         <input
           type="checkbox"
           checked={checked === "true"}
@@ -29,7 +25,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
             checked === "true" ? "custom-checkbox__tick" : ""
           }`}
         />
-        {label && <label className="custom-checkbox__label">{label}</label>}
         <div className="custom-checkbox__box" />
         {checked === "true" && (
           <div
@@ -38,6 +33,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
           >
           </div>
         )}
+              {label && <label className="custom-checkbox__label">{label}</label>}
+
       </div>{" "}
     </div>
   );
